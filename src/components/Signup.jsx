@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import apple from "../assets/apple.svg";
 import google_s from "../assets/google_s.svg";
 import group from "../assets/group.svg";
-function Signupp() {
+function Signup() {
   const [Data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -78,8 +78,8 @@ function Signupp() {
                   }}
                 />
               </div>
-              <div className="  px-3 ">
-                <p className="text-gray-500 flex" style={{ color: "#848080" }}>Last Name</p>
+              <div className="text-[#848080] px-3 ">
+                <p className=" flex">Last Name</p>
                 <input
                   type="text"
                   className="h-58 top-378 pl-2 rounded-sm border border-gray-300 "
@@ -97,11 +97,11 @@ function Signupp() {
               </div>
             </div>
             {/* Email */}
-            <div className="  px-3  py-2  flex-row-reverse" style={{ marginRight: "40px" }}>
-              <label className="flex ml-11" style={{ color: "#848080" }}>Email Address</label>
+            <div className="  px-3  py-2 text-[#848080] flex-row-reverse">
+              <label className="flex ml-11">Email Address</label>
               <input
                 type="email"
-                className="h-58 top-378 ml-11 pl-2 rounded-sm border border-gray-300 "
+                className="h-58 top-378 ml-4 pl-2 rounded-sm border border-gray-300 "
                 placeholder="Enter your email address "
                 name="emailAddress"
                 value={Data.emailAddress}
@@ -114,9 +114,9 @@ function Signupp() {
                 }}/>
             </div>
             {/* password */}
-            <div className=" rounded-2xl  flex  py-2 ">
+            <div className=" rounded-2xl text-[#848080] flex  py-2 ">
               <div className="ml-14">
-                <label className="  text-gray-500 flex" style={{ color: "#848080" }}>Password</label>
+                <label className="flex" >Password</label>
                 <input
                   type="password"
                   className="h-58 top-378 pl-2 rounded-sm border border-gray-300 "
@@ -132,8 +132,8 @@ function Signupp() {
                   }}
                 />
               </div>
-              <div className="px-3">
-                <label className="text-gray-500  flex" style={{ color: "#848080" }}>Confirm Password</label>
+              <div className="px-3 text-[#848080]">
+                <label className="text-gray-500  flex">Confirm Password</label>
                 <input
                   type="password"
                   className="h-58 top-378 pl-2 rounded-sm border border-gray-300 "
@@ -151,10 +151,8 @@ function Signupp() {
             </div>
             {/* button */}
             <button className="py-2 ml-4 mt-2 bg-green-500  rounded-2xl" style={{width: "400px"}} onClick={handleSubmit}>sign up</button>
-            <div className="flex py-2 ml-16">
-              <hr className="bg-gray-200 mt-3 " style={{ width: "180px", height: "2px" }}/>
-              <span style={{ color: "black" }}>or</span>
-              <hr className="bg-gray-200 mt-3" style={{ width: "180px", height: "2px" }}/>
+            <div className="flex py-2 ml-16 text-[#848080]">
+              <hr className="mt-3" style={{ width: "180px", height: "2px" }}/><span>or</span><hr className="mt-3" style={{ width: "180px", height: "2px" }}/>
             </div>
             <div className="flex mt-1 ml-11">
               <div className="  px-3 flex ml-2 rounded-lg border border-gray-300 " style={{ marginRight: "20px" }} >
@@ -170,4 +168,4 @@ function Signupp() {
   </div>
 );
 }
-export default Signupp;
+export default Signup;
