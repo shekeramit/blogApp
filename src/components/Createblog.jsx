@@ -5,13 +5,23 @@ import { CreateBlog } from '../slices/BlogSlice';
 const Createblog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [blogTitle, setBlogTitle] = useState('');
-  const [blogDescription, setBlogDescription] = useState('');
-  const [imageUrl, setImage] = useState('');
-
+  const [Data, setData] = useState({
+    blogTitle: "",
+    blogDescription: "",
+    imageUrl: "",
+  });
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setData({ ...Data, [name]: value });
+  }
   const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(CreateBlog({blogTitle,blogDescription,imageUrl}));
+      const blogData = {
+        blogTitle: Data.blogTitle,
+        blogDescription: Data.blogDescription,
+        imageUrl: Data.imageUrl,
+      };
+      dispatch(CreateBlog(blogData));
       if(Response){
         alert("Blog created Succesfully")
         navigate('/')
@@ -29,8 +39,9 @@ const Createblog = () => {
                       id="blogTitle"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                       placeholder="Enter your blog title"
-                      value={blogTitle}
-                      onChange={(e) => setBlogTitle(e.target.value)}
+                      value={Data.blogTitle}
+                      name='blogTitle'
+                      onChange={handleChange}
                       required
                   />
               </div>
@@ -41,8 +52,9 @@ const Createblog = () => {
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                       placeholder="Enter your blog description"
                       rows="4"
-                      value={blogDescription}
-                      onChange={(e) => setBlogDescription(e.target.value)}
+                      name='blogDescription'
+                      value={Data.blogDescription}
+                      onChange={handleChange}
                       required
                   ></textarea>
               </div>
@@ -53,8 +65,9 @@ const Createblog = () => {
                       id="image"
                       className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500"
                       placeholder="Enter image URL"
-                      value={imageUrl}
-                      onChange={(e) => setImage(e.target.value)}
+                      name='imageUrl'
+                      value={Data.imageUrl}
+                      onChange={handleChange}
                   />
               </div>
               <button type="submit" className="bg-indigo-500 text-center text-white px-4 py-2 rounded-md hover:bg-indigo-600 transition-colors">Submit</button>

@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import baseApi from "../config/Config";
 const initialState = {
     blog: [],
     loading: false,
@@ -6,7 +7,7 @@ const initialState = {
   };
 
 export const CreateBlog = createAsyncThunk("blog", async (body) => {
-    const response = await fetch("http://localhost:8080/creteblog", {
+    const response = await fetch(`${baseApi}/creteblog`, {
       method: "post",
       body: JSON.stringify(body),
       headers: {
