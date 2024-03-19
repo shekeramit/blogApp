@@ -7,8 +7,6 @@ const Navbar = () => {
 
   const toggleDarkMode = () => {
     setDarkMode(!darkMode);
-    // You can also use localStorage to persist the user's preference
-    // localStorage.setItem('darkModeEnabled', !darkMode);
   };
   const handleLogout = () => {
     navigate('/login');
