@@ -6,3 +6,10 @@ body {
   margin: 0;
 
 }
+@layer utilities {
+  @variants dark {
+    .dark {
+      @apply bg-gray-900 text-gray-200;
+    }
+  }
+}
