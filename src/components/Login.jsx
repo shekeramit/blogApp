@@ -1,25 +1,28 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import group from "../assets/group.svg";
+import {loginuser} from '../slices/AuthSlice'
+import { useDispatch } from "react-redux";
 function Login() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [Data, setData] = useState({
     emailAddress: "",
     password: ""});
-  //on change function
   function handleChange(e){
     const { name, value} = e.target;
     setData({...Data, [name]: value });
   }
-  // on Submit function
   async function handleSubmit(e) {
     e.preventDefault();
-    }
     // Constructing the data object to send to the backend
     const FormData = {
       emailAddress: Data.emailAddress,
       password: Data.password,
     };
-    console.log(FormData);
+    dispatch(loginuser(FormData));
+      navigate('/')
+  }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-slate-50 font-inter">
     <main className="flex flex-col w-full items-center justify-center flex-1 text-center">

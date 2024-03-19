@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import apple from "../assets/apple.svg";
 import google_s from "../assets/google_s.svg";
 import group from "../assets/group.svg";
+import{SingupUser} from '../slices/AuthSlice'
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 function Signup() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [Data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -11,12 +16,10 @@ function Signup() {
     confirmPassword: "",
     passwordError: "",
   });
-  //on change function
-  function handleChange(e){
-    const { name, value} = e.target;
-    setData({...Data, [name]: value });
+  function handleChange(e) {
+    const { name, value } = e.target;
+    setData({ ...Data, [name]: value });
   }
-  // on Submit function
   async function handleSubmit(e) {
     e.preventDefault();
     if (Data.password !== Data.confirmPassword) {
@@ -36,7 +39,9 @@ function Signup() {
       confirmPassword: Data.confirmPassword,
       agreeToTerms: Data.agreeToTerms,
     };
-    console.log(FormData);
+    dispatch(SingupUser(FormData));
+      if(Response){
+        navigate('/login')}
   }
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-slate-50 font-inter">
@@ -49,7 +54,7 @@ function Signup() {
               <div className=" h-6 ">
                 <h1 className="text-xl text-left" style={{ color: "#AEADAD" }}>Welcome to,<spna className="text-green-500">MyBlog App</spna></h1>
                 <div className="mt-2 ml-3 text-[#777777 ]">
-                  <p className="   text-gray-400 flex">Sign up for read and post</p>
+                  <p className="text-gray-400 flex">Sign up for read and post</p>
                   <p className=" text-gray-400 flex">Blogs!<span className=" text-green-500 px-8 h-1  bg-green-300 mt-3 ml-2 rounded-2xl"></span></p>
                 </div>
                 <img src={group} />
@@ -97,11 +102,11 @@ function Signup() {
               </div>
             </div>
             {/* Email */}
-            <div className="  px-3  py-2 text-[#848080] flex-row-reverse">
+            <div className="  px-3  py-2 text-[#848080]">
               <label className="flex ml-11">Email Address</label>
               <input
                 type="email"
-                className="h-58 top-378 ml-4 pl-2 rounded-sm border border-gray-300 "
+                className="h-58 top-378 ml-5 pl-2 rounded-sm border border-gray-300 "
                 placeholder="Enter your email address "
                 name="emailAddress"
                 value={Data.emailAddress}
@@ -111,12 +116,13 @@ function Signup() {
                   height: "37px",
                   borderRadius: "8px",
                   color: "black",
-                }}/>
+                }}
+              />
             </div>
             {/* password */}
             <div className=" rounded-2xl text-[#848080] flex  py-2 ">
               <div className="ml-14">
-                <label className="flex" >Password</label>
+                <label className="flex">Password</label>
                 <input
                   type="password"
                   className="h-58 top-378 pl-2 rounded-sm border border-gray-300 "
@@ -146,26 +152,55 @@ function Signup() {
                     height: "37px",
                     borderRadius: "8px",
                     color: "black",
-                  }}/>
+                  }}
+                />
               </div>
             </div>
             {/* button */}
-            <button className="py-2 ml-4 mt-2 bg-green-500  rounded-2xl" style={{width: "400px"}} onClick={handleSubmit}>sign up</button>
+            <button
+              className="py-2 ml-4 mt-2 bg-green-500  rounded-2xl"
+              style={{ width: "400px" }}
+              onClick={handleSubmit}
+            >
+              sign up
+            </button>
             <div className="flex py-2 ml-16 text-[#848080]">
-              <hr className="mt-3" style={{ width: "180px", height: "2px" }}/><span>or</span><hr className="mt-3" style={{ width: "180px", height: "2px" }}/>
+              <hr className="mt-3" style={{ width: "180px", height: "2px" }} />
+              <span>or</span>
+              <hr className="mt-3" style={{ width: "180px", height: "2px" }} />
             </div>
             <div className="flex mt-1 ml-11">
-              <div className="  px-3 flex ml-2 rounded-lg border border-gray-300 " style={{ marginRight: "20px" }} >
-                <img src={google_s} style={{ width: "25px", marginLeft: "-10px" }}/><label className=" text-black  text-sm mt-2"> Continue with Google</label>
+              <div
+                className="  px-3 flex ml-2 rounded-lg border border-gray-300 "
+                style={{ marginRight: "20px" }}
+              >
+                <img
+                  src={google_s}
+                  style={{ width: "25px", marginLeft: "-10px" }}
+                />
+                <label className=" text-black  text-sm mt-2">
+                  {" "}
+                  Continue with Google
+                </label>
               </div>
-              <div className="  px-3  py-2 flex  rounded-lg border border-gray-300" style={{ marginRight: "40px" }}>
-                <img src={apple} className="" style={{ width: "30px", marginLeft: "-20px" }} /><label className=" text-black  text-sm">Continue with Apple</label>
+              <div
+                className="  px-3  py-2 flex  rounded-lg border border-gray-300"
+                style={{ marginRight: "40px" }}
+              >
+                <img
+                  src={apple}
+                  className=""
+                  style={{ width: "30px", marginLeft: "-20px" }}
+                />
+                <label className=" text-black  text-sm">
+                  Continue with Apple
+                </label>
               </div>
-            </div>         
+            </div>
           </div>
         </div>
-    </main>
-  </div>
-);
+      </main>
+    </div>
+  );
 }
 export default Signup;
