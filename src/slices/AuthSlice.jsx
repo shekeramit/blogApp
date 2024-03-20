@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import baseApi from "../config/Config";
 const initialState = {
   auth: null,
   loading: false,
@@ -7,7 +8,7 @@ const initialState = {
 
 // signup
 export const SingupUser = createAsyncThunk("auth/signup", async (body) => {
-  const response = await fetch("http://localhost:8080/signup", {
+  const response = await fetch(`${baseApi}/signup`, {
     method: "post",
     body: JSON.stringify(body),
     headers: {
@@ -19,7 +20,7 @@ export const SingupUser = createAsyncThunk("auth/signup", async (body) => {
 
 //   login
 export const loginuser = createAsyncThunk("auth/login", async (body) => {
-  const response = await fetch("http://localhost:8080/login", {
+  const response = await fetch(`${baseApi}/login`, {
     method: "post",
     body: JSON.stringify(body),
     headers: {
