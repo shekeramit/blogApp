@@ -5,9 +5,9 @@ const initialState = {
     loading: false,
     error: null,
   };
-
+//sending blog to server
 export const CreateBlog = createAsyncThunk("blog", async (body) => {
-    const response = await fetch(`${baseApi}/creteblog`, {
+    const response = await fetch(`${baseApi}/createblog`, {
       method: "post",
       body: JSON.stringify(body),
       headers: {
@@ -17,11 +17,11 @@ export const CreateBlog = createAsyncThunk("blog", async (body) => {
     return await response.json();
   });
 
-  const blogSlice = createSlice({
+const blogSlice = createSlice({
     name: "blog",
     initialState,
     reducers: {
-      
+
     },
     extraReducers: (builder) => {
       builder

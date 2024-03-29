@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { CreateBlog } from '../slices/BlogSlice';
+import { CreateBlog } from '../features/BlogSend';
 const Createblog = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
