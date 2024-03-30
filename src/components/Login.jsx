@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import group from "../assets/group.svg";
-import {loginuser} from '../slices/AuthSlice'
+import {loginuser} from '../features/AuthSlice'
 import { useDispatch } from "react-redux";
 function Login() {
   const dispatch = useDispatch();

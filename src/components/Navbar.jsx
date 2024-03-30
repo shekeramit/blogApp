@@ -3,16 +3,12 @@ import {Link, useNavigate } from 'react-router-dom';
 const Navbar = () => {
   const navigate = useNavigate();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
-
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
   const handleLogout = () => {
     navigate('/login');
-    console.log('Logout clicked');
   };
-
+  const handleHome = () =>{
+    navigate("/");
+  }
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
@@ -23,13 +19,11 @@ const Navbar = () => {
 
   return (
     <div>
-      <nav className={`bg-gray-800 p-4 ${darkMode ? 'dark' : ''}`}>
+      <nav className="bg-gray-800 p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div className="text-white font-bold">MyBlog App</div>
           <div className="flex space-x-4">
-          <button className="focus:outline-none" onClick={toggleDarkMode}>
-          {darkMode ? 'Light Mode' : 'Dark Mode'}
-          </button>
+          <button className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-1 rounded-md" onClick={handleHome}>Home</button>
           <input
           type="text"
           placeholder="Search..."

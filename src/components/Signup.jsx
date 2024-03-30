@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import apple from "../assets/apple.svg";
 import google_s from "../assets/google_s.svg";
 import group from "../assets/group.svg";
-import{SingupUser} from '../slices/AuthSlice'
+import{SingupUser} from '../features/AuthSlice'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 function Signup() {
